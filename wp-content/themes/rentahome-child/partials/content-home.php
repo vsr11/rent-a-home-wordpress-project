@@ -4,7 +4,7 @@
 			<?php if ( has_post_thumbnail() ) : ?>
 				<img src="<?php the_post_thumbnail(); ?>" alt="property image">
 			<?php else : ?>
-				<img src="wp-content/themes/rentahome/images/bedroom.jpg" alt="property image">
+				<img src="<?php echo get_template_directory_uri(); ?>/images/bedroom.jpg" alt="property image">
 			<?php endif; ?>
 		</div>
 		<div class="property-primary">
