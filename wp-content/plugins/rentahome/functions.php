@@ -1,6 +1,5 @@
 <?php
 
-
 function rent_time_ago() {
 	return sprintf( esc_html__( '%s ago', 'rentahome' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) );
 }
@@ -43,8 +42,8 @@ function property_details_shortcode( $id = '' ) {
 add_shortcode( 'property_details', 'property_details_shortcode' );
 
 function my_enqueue() {
-	wp_enqueue_script( 'my_script2', plugins_url( '/scripts/script2.js', __FILE__ ), array( 'jquery' ), 1.1 );
-	wp_localize_script( 'my_script2', 'my_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+	wp_enqueue_script( 'my_utils', plugins_url( '/scripts/utils.js', __FILE__ ), array( 'jquery' ), 1.1 );
+	wp_localize_script( 'my_utils', 'my_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 }
 add_action( 'wp_enqueue_scripts', 'my_enqueue' );
 
