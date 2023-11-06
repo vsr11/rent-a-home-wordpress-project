@@ -1,15 +1,10 @@
 <?php
-/**
- * Some stuff
- * Template Name: My homs
- *
- * @package rentahome
- */
 
 $author = ( get_query_var( 'author' ) ) ? get_query_var( 'author' ) : get_current_user_id();
+$q      = new WP_Query( array( 'post_status' => 'publish', 'post_type' => 'home', 'author' => $author ) );
 
-$q = new WP_Query( array( 'post_status' => 'publish', 'post_type' => 'home', 'author' => $author ) );
 get_header();
+
 if ( $q->have_posts() ) :
 	echo '<h1>All property offers from ';
 	echo get_user_by( 'id', $author )->display_name;
@@ -19,4 +14,5 @@ if ( $q->have_posts() ) :
 		get_template_part( 'partials/content', 'home' );
 	endwhile;
 endif;
+
 get_footer();
