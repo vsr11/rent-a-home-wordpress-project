@@ -1,39 +1,29 @@
-<?php get_header() ?>
-
 <?php
 /**
  * Template Name: Likes property
  */
 
+get_header();
 
-$user_id = get_current_user_id();
+$user_id    = get_current_user_id();
+$apply_list = get_user_meta( $user_id, 'list', true );
 
+echo wp_get_current_user()->display_name;
 
-$applay_list = get_user_meta( $user_id, 'list', true );
-?>
-<!-- <h1>Беленик на
-	<?php echo wp_get_current_user()->display_name ?>
-</h1> -->
-
-
-<?php
-
-$args      = array(
+$args = array(
 	'post_type' => 'home',
-	'key' => 'list',
-	'value' => $applay_list,
+	'key'       => 'list',
+	'value'     => $apply_list,
 );
+
 $the_query = new WP_Query( $args );
 
-
-// The Loop
 if ( $the_query->have_posts() ) {
 	echo '<ul>';
 	while ( $the_query->have_posts() ) {
 		$the_query->the_post();
 
-		if ( in_array( get_the_ID(), $applay_list ) ) {
-
+		if ( in_array( get_the_ID(), $apply_list ) ) {
 			get_template_part( 'partials/content', 'home' );
 		}
 	}
@@ -41,7 +31,7 @@ if ( $the_query->have_posts() ) {
 } else {
 	// no posts found
 }
-/* Restore original Post Data */
+
 wp_reset_postdata();
-?>
-<?php get_footer(); ?>
+
+get_footer();

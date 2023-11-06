@@ -5,13 +5,12 @@
  * @package rentahome
  */
 
-?>
-<?php
+
 get_header();
 ?>
 
 <div class="err-img">
-	<img src="https://localhost/wp-content/themes/rentahome/images/404-error-page-not-found.jpg" alt="not found"
+	<img src="<?php echo get_template_directory_uri(); ?>/images/404-error-page-not-found.jpg" alt="not found"
 		style="width: 400px;">
 
 </div>
@@ -19,5 +18,4 @@ get_header();
 	<?php get_search_form(); ?>
 </div>
 
-
-<?php get_footer(); ?>
+<?php get_footer();
